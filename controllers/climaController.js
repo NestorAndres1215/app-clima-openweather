@@ -1,16 +1,21 @@
 const climaService = require('../services/climaService');
 
+const MENSAJES = {
+    ERROR_CIUDAD_VACIA: 'Por favor, ingresa una ciudad.',
+    ERROR_NO_ENCONTRADA: 'Ciudad no encontrada.'
+};
+
 let historialCiudades = [];
 
-exports.getHome = (req, res) => {
+const getHome = (req, res) => {
     res.render('index', { clima: null, error: null });
 };
 
-exports.buscarCiudad = async (req, res) => {
+const buscarCiudad = async (req, res) => {
     const ciudad = req.body.ciudad?.trim();
 
     if (!ciudad) {
-        return res.render('index', { clima: null, error: 'Por favor, ingresa una ciudad.' });
+        return res.render('index', { clima: null, error: MENSAJES.ERROR_CIUDAD_VACIA });
     }
 
     try {
@@ -23,10 +28,16 @@ exports.buscarCiudad = async (req, res) => {
 
         res.render('index', { clima, error: null });
     } catch (err) {
-        res.render('index', { clima: null, error: err.message || 'Ciudad no encontrada.' });
+        res.render('index', { clima: null, error: err.message || MENSAJES.ERROR_NO_ENCONTRADA });
     }
 };
 
-exports.verHistorial = (req, res) => {
+const verHistorial = (req, res) => {
     res.render('historial', { ciudades: historialCiudades });
+};
+
+module.exports = {
+    getHome,
+    buscarCiudad,
+    verHistorial
 };

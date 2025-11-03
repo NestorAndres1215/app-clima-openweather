@@ -13,22 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #4a6cf7 0%, #3b5bdb 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hr-premium {
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #4a6cf7, transparent);
-            border: none;
-            border-radius: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="bg-premium-50 min-h-screen font-sans">
@@ -128,15 +113,15 @@
 
         </div>
     </main>
-        <!-- Botón Volver Arriba -->
-        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-            class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
-            aria-label="Volver arriba">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-        </button>
-<script src="/js/historial.js"></script>
+    <!-- Botón Volver Arriba -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
+        aria-label="Volver arriba">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+    <script src="/js/historial.js"></script>
 </body>
 
 </html>

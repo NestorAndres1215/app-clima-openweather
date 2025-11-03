@@ -13,29 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #4a6cf7 0%, #3b5bdb 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hr-premium {
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #4a6cf7, transparent);
-            border: none;
-            border-radius: 2px;
-        }
-
-        .input-premium {
-            @apply w-full px-5 py-3 rounded-xl border border-premium-200 bg-white/80 backdrop-blur-sm text-premium-900 placeholder-premium-400 focus:outline-none focus:ring-2 focus:ring-premium-500 focus:border-transparent transition-all duration-300 shadow-md;
-        }
-
-        .btn-premium {
-            @apply px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-premium-500 to-premium-600 shadow-premium-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 flex items-center gap-2;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="bg-premium-50 min-h-screen font-sans">
@@ -50,26 +28,21 @@
                 <!-- Formulario de Búsqueda -->
                 <form action="/buscar" method="POST"
                     class="mb-12 bg-white/70 backdrop-blur-lg rounded-2xl p-8 shadow-premium-lg border border-premium-100">
-      <div class="flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden shadow-premium-lg border-2 border-premium-200 bg-white/90 backdrop-blur-md">
-  <input 
-    type="text" 
-    name="ciudad" 
-    placeholder="Ingresa la ciudad..." 
-    required 
-    autofocus
-    class="flex-1 px-6 py-4 text-lg text-premium-900 placeholder-premium-400 
+                    <div
+                        class="flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden shadow-premium-lg border-2 border-premium-200 bg-white/90 backdrop-blur-md">
+                        <input type="text" name="ciudad" placeholder="Ingresa la ciudad..." required autofocus class="flex-1 px-6 py-4 text-lg text-premium-900 placeholder-premium-400 
            focus:outline-none focus:z-10 
-           font-medium tracking-wide"
-  >
-  <button type="submit" class="px-8 py-4 bg-gradient-to-r from-premium-500 to-premium-600 text-white font-bold 
+           font-medium tracking-wide">
+                        <button type="submit" class="px-8 py-4 bg-gradient-to-r from-premium-500 to-premium-600 text-white font-bold 
            hover:from-premium-600 hover:to-premium-700 
            transition-all duration-300 flex items-center justify-center gap-2">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-    </svg>
-    Buscar
-  </button>
-</div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            Buscar
+                        </button>
+                    </div>
                 </form>
 
                 <!-- Mensaje de Error -->
@@ -124,16 +97,15 @@
         </main>
 
 
-            <!-- Botón Volver Arriba -->
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-                class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
-                aria-label="Volver arriba">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                </svg>
-            </button>
-<script src="/js/index.js"></script>
+        <!-- Botón Volver Arriba -->
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
+            aria-label="Volver arriba">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+        </button>
+        <script src="/js/index.js"></script>
 </body>
 
 </html>

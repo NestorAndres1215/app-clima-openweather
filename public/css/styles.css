@@ -1,0 +1,21 @@
+        .gradient-bg {
+            background: linear-gradient(135deg, #4a6cf7 0%, #3b5bdb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hr-premium {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4a6cf7, transparent);
+            border: none;
+            border-radius: 2px;
+        }
+
+        .input-premium {
+            @apply w-full px-5 py-3 rounded-xl border border-premium-200 bg-white/80 backdrop-blur-sm text-premium-900 placeholder-premium-400 focus:outline-none focus:ring-2 focus:ring-premium-500 focus:border-transparent transition-all duration-300 shadow-md;
+        }
+
+        .btn-premium {
+            @apply px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-premium-500 to-premium-600 shadow-premium-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 flex items-center gap-2;
+        }

@@ -1,159 +1,175 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Historial de Ciudades - Clima Premium</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Historial de Ciudades - Clima Premium</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
-  <!-- Configuración Premium -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Playfair Display"', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            premium: {
-              50: '#f8f9fc',
-              100: '#e8ecf4',
-              500: '#4a6cf7',
-              600: '#3b5bdb',
-              700: '#2c4bc7',
-              900: '#1e3a8a',
+    <!-- Configuración Premium -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        premium: {
+                            50: '#f8f9fc',
+                            100: '#e8ecf4',
+                            500: '#4a6cf7',
+                            600: '#3b5bdb',
+                            700: '#2c4bc7',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -5px rgba(74, 108, 247, 0.15)',
+                        'premium-lg': '0 20px 50px -10px rgba(74, 108, 247, 0.2)',
+                    }
+                }
             }
-          },
-          boxShadow: {
-            'premium': '0 10px 30px -5px rgba(74, 108, 247, 0.15)',
-            'premium-lg': '0 20px 50px -10px rgba(74, 108, 247, 0.2)',
-          }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    .gradient-bg {
-      background: linear-gradient(135deg, #4a6cf7 0%, #3b5bdb 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hr-premium {
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #4a6cf7, transparent);
-      border: none;
-      border-radius: 2px;
-    }
-  </style>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4a6cf7 0%, #3b5bdb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hr-premium {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4a6cf7, transparent);
+            border: none;
+            border-radius: 2px;
+        }
+    </style>
 </head>
+
 <body class="bg-premium-50 min-h-screen font-sans">
 
 
-  <!-- Main Content -->
-  <main class="container mx-auto px-6 py-16">
-    <div class="max-w-4xl mx-auto">
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        <div class="max-w-4xl mx-auto">
 
-      <!-- Título Principal -->
-      <div class="text-center mb-12">
-        <h1 class="text-5xl md:text-6xl font-serif font-bold text-premium-900 mb-4">
-          <span class="gradient-bg">Historial de Búsquedas</span>
-        </h1>
-        <hr class="hr-premium w-32 mx-auto" />
-        <p class="mt-4 text-premium-600 font-medium text-sm tracking-wider uppercase">
-          Ciudades que has consultado recientemente
-        </p>
-      </div>
+            <!-- Título Principal -->
+            <div class="text-center mb-12">
+                <h1 class="text-5xl md:text-6xl font-serif font-bold text-premium-900 mb-4">
+                    <span class="gradient-bg">Historial de Búsquedas</span>
+                </h1>
+                <hr class="hr-premium w-32 mx-auto" />
+                <p class="mt-4 text-premium-600 font-medium text-sm tracking-wider uppercase">
+                    Ciudades que has consultado recientemente
+                </p>
+            </div>
 
-      <!-- Lista de Ciudades (Cards Premium) -->
-      <% if (ciudades && ciudades.length > 0) { %>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <% ciudades.forEach((ciudad, index) => { %>
-            <div class="group bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-premium-lg border border-premium-100 
+            <!-- Lista de Ciudades (Cards Premium) -->
+            <% if (ciudades && ciudades.length> 0) { %>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <% ciudades.forEach((ciudad, index)=> { %>
+                        <div class="group bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-premium-lg border border-premium-100 
                         transition-all duration-300 hover:scale-105 hover:shadow-premium-lg hover:border-premium-300 
                         cursor-pointer">
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-3">
-                  <!-- Icono de ubicación -->
-                  <div class="p-2 rounded-full bg-gradient-to-br from-premium-500 to-premium-600 shadow-md group-hover:scale-110 transition">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <span class="text-xs font-semibold text-premium-500 uppercase tracking-wider">
-                    #<%= index + 1 %>
-                  </span>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <!-- Icono de ubicación -->
+                                    <div
+                                        class="p-2 rounded-full bg-gradient-to-br from-premium-500 to-premium-600 shadow-md group-hover:scale-110 transition">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-xs font-semibold text-premium-500 uppercase tracking-wider">
+                                        #<%= index + 1 %>
+                                    </span>
+                                </div>
+                                <!-- Fecha aproximada (opcional: puedes pasar fecha desde el backend) -->
+                                <span class="text-xs text-premium-400">
+                                    Hoy
+                                </span>
+                            </div>
+
+                            <h3
+                                class="text-xl font-serif font-bold text-premium-900 group-hover:text-premium-700 transition">
+                                <%= ciudad %>
+                            </h3>
+
+                            <div class="mt-4 flex items-center gap-2 text-premium-600 text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Consultado hace poco</span>
+                            </div>
+                        </div>
+                        <% }) %>
                 </div>
-                <!-- Fecha aproximada (opcional: puedes pasar fecha desde el backend) -->
-                <span class="text-xs text-premium-400">
-                  Hoy
-                </span>
-              </div>
+                <% } else { %>
+                    <!-- Sin historial -->
+                    <div
+                        class="text-center py-16 bg-white/60 backdrop-blur-lg rounded-2xl shadow-premium-lg border border-premium-100">
+                        <svg class="w-20 h-20 mx-auto text-premium-300 mb-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M20 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0V8a2 2 0 00-2-2H6a2 2 0 00-2 2v5m16 0H4" />
+                        </svg>
+                        <p class="text-xl font-medium text-premium-700">Aún no has consultado ninguna ciudad</p>
+                        <p class="text-premium-500 mt-2">¡Empieza buscando una!</p>
+                        <a href="/"
+                            class="mt-6 inline-block px-8 py-3 bg-gradient-to-r from-premium-500 to-premium-600 text-white font-bold rounded-xl shadow-premium-lg hover:scale-105 transition">
+                            Volver al inicio
+                        </a>
+                    </div>
+                    <% } %>
 
-              <h3 class="text-xl font-serif font-bold text-premium-900 group-hover:text-premium-700 transition">
-                <%= ciudad %>
-              </h3>
+                        <!-- Botón Volver (si hay historial) -->
+                        <% if (ciudades && ciudades.length> 0) { %>
+                            <div class="text-center mt-12">
+                                <a href="/"
+                                    class="inline-flex items-center gap-2 text-premium-600 hover:text-premium-700 font-medium transition text-lg">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                    </svg>
+                                    Volver al inicio
+                                </a>
+                            </div>
+                            <% } %>
 
-              <div class="mt-4 flex items-center gap-2 text-premium-600 text-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span>Consultado hace poco</span>
-              </div>
-            </div>
-          <% }) %>
         </div>
-      <% } else { %>
-        <!-- Sin historial -->
-        <div class="text-center py-16 bg-white/60 backdrop-blur-lg rounded-2xl shadow-premium-lg border border-premium-100">
-          <svg class="w-20 h-20 mx-auto text-premium-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0V8a2 2 0 00-2-2H6a2 2 0 00-2 2v5m16 0H4"/>
-          </svg>
-          <p class="text-xl font-medium text-premium-700">Aún no has consultado ninguna ciudad</p>
-          <p class="text-premium-500 mt-2">¡Empieza buscando una!</p>
-          <a href="/" class="mt-6 inline-block px-8 py-3 bg-gradient-to-r from-premium-500 to-premium-600 text-white font-bold rounded-xl shadow-premium-lg hover:scale-105 transition">
-            Volver al inicio
-          </a>
-        </div>
-      <% } %>
+    </main>
 
-      <!-- Botón Volver (si hay historial) -->
-      <% if (ciudades && ciudades.length > 0) { %>
-        <div class="text-center mt-12">
-          <a href="/" class="inline-flex items-center gap-2 text-premium-600 hover:text-premium-700 font-medium transition text-lg">
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+        <!-- Botón Volver Arriba -->
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
+            aria-label="Volver arriba">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
-            Volver al inicio
-          </a>
-        </div>
-      <% } %>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <%- include('partials/footer') %>
-
-  <!-- Botón Volver Arriba -->
-  <button 
-    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-    class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
-    aria-label="Volver arriba"
-  >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-    </svg>
-  </button>
+        </button>
 
 </body>
+
 </html>

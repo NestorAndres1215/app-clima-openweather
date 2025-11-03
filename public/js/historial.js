@@ -23,3 +23,59 @@ tailwind.config = {
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Animar título
+  const title = document.querySelector('main h1 span');
+  if (title) {
+    title.style.opacity = 0;
+    title.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      title.style.transition = 'all 0.8s ease-out';
+      title.style.opacity = 1;
+      title.style.transform = 'translateY(0)';
+    }, 200);
+  }
+
+  // Animar HR
+  const hr = document.querySelector('main hr.hr-premium');
+  if (hr) {
+    hr.style.width = '0';
+    setTimeout(() => {
+      hr.style.transition = 'width 0.8s ease-out';
+      hr.style.width = '8rem'; // Coincide con w-32
+    }, 400);
+  }
+
+  // Animar cards
+  const cards = document.querySelectorAll('main .group');
+  cards.forEach((card, index) => {
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      card.style.transition = 'all 0.6s ease-out';
+      card.style.opacity = 1;
+      card.style.transform = 'translateY(0)';
+    }, 600 + index * 150); // animación secuencial
+  });
+
+  // Animar botón "Volver arriba" al cargar
+  const btnUp = document.querySelector('button[aria-label="Volver arriba"]');
+  if (btnUp) {
+    btnUp.style.opacity = 0;
+    btnUp.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      btnUp.style.transition = 'all 0.6s ease-out';
+      btnUp.style.opacity = 1;
+      btnUp.style.transform = 'translateY(0)';
+    }, 1000);
+
+    // Efecto hover adicional
+    btnUp.addEventListener('mouseenter', () => {
+      btnUp.style.transform = 'scale(1.15)';
+    });
+    btnUp.addEventListener('mouseleave', () => {
+      btnUp.style.transform = 'scale(1)';
+    });
+  }
+});

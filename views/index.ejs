@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clima por Ciudad</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Configuración Premium -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        premium: {
+                            50: '#f8f9fc',
+                            100: '#e8ecf4',
+                            500: '#4a6cf7',
+                            600: '#3b5bdb',
+                            700: '#2c4bc7',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -5px rgba(74, 108, 247, 0.15)',
+                        'premium-lg': '0 20px 50px -10px rgba(74, 108, 247, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4a6cf7 0%, #3b5bdb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hr-premium {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4a6cf7, transparent);
+            border: none;
+            border-radius: 2px;
+        }
+
+        .input-premium {
+            @apply w-full px-5 py-3 rounded-xl border border-premium-200 bg-white/80 backdrop-blur-sm text-premium-900 placeholder-premium-400 focus:outline-none focus:ring-2 focus:ring-premium-500 focus:border-transparent transition-all duration-300 shadow-md;
+        }
+
+        .btn-premium {
+            @apply px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-premium-500 to-premium-600 shadow-premium-lg hover:shadow-premium-lg hover:scale-105 transition-all duration-300 flex items-center gap-2;
+        }
+    </style>
+</head>
+
+<body class="bg-premium-50 min-h-screen font-sans">
+
+    <!-- Header -->
+    <%- include('partials/header') %>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-6 py-16">
+            <div class="max-w-2xl mx-auto">
+
+                <!-- Formulario de Búsqueda -->
+                <form action="/buscar" method="POST"
+                    class="mb-12 bg-white/70 backdrop-blur-lg rounded-2xl p-8 shadow-premium-lg border border-premium-100">
+      <div class="flex flex-col md:flex-row gap-0 rounded-2xl overflow-hidden shadow-premium-lg border-2 border-premium-200 bg-white/90 backdrop-blur-md">
+  <input 
+    type="text" 
+    name="ciudad" 
+    placeholder="Ingresa la ciudad..." 
+    required 
+    autofocus
+    class="flex-1 px-6 py-4 text-lg text-premium-900 placeholder-premium-400 
+           focus:outline-none focus:z-10 
+           font-medium tracking-wide"
+  >
+  <button type="submit" class="px-8 py-4 bg-gradient-to-r from-premium-500 to-premium-600 text-white font-bold 
+           hover:from-premium-600 hover:to-premium-700 
+           transition-all duration-300 flex items-center justify-center gap-2">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+    </svg>
+    Buscar
+  </button>
+</div>
+                </form>
+
+                <!-- Mensaje de Error -->
+                <% if (error) { %>
+                    <div
+                        class="mb-8 p-5 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-3 shadow-sm">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>
+                            <%= error %>
+                        </span>
+                    </div>
+                    <% } %>
+
+                        <!-- Resultado del Clima -->
+                        <% if (clima) { %>
+                            <div
+                                class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-premium-lg border border-premium-100 text-center">
+                                <h2 class="text-4xl font-serif font-bold text-premium-900 mb-2">
+                                    <%= clima.ciudad %>
+                                </h2>
+                                <p class="text-6xl font-bold text-premium-600 mb-4">
+                                    <%= clima.temperatura %>°C
+                                </p>
+                                <p class="text-lg text-premium-700 capitalize mb-6">
+                                    <%= clima.descripcion %>
+                                </p>
+                                <img src="<%= clima.icono %>" alt="Icono del clima"
+                                    class="w-32 h-32 mx-auto mb-6 rounded-full shadow-premium p-4 bg-premium-50">
+                                <div class="flex justify-center gap-6 text-sm text-premium-600">
+                                    <span>Humedad: <%= clima.humedad %>%</span>
+                                    <span>Viento: <%= clima.viento %> km/h</span>
+                                </div>
+                            </div>
+                            <% } %>
+
+                                <!-- Enlace al historial -->
+                                <div class="text-center mt-12">
+                                    <a href="/historial"
+                                        class="inline-flex items-center gap-2 text-premium-600 hover:text-premium-700 font-medium transition">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Ver historial de ciudades consultadas
+                                    </a>
+                                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <%- include('partials/footer') %>
+
+            <!-- Botón Volver Arriba -->
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+                class="fixed bottom-8 right-8 p-3 rounded-full bg-premium-600 text-white shadow-premium-lg hover:bg-premium-700 hover:scale-110 transition-all duration-300 z-50"
+                aria-label="Volver arriba">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+            </button>
+
+</body>
+
+</html>
